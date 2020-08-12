@@ -1,0 +1,9 @@
+.contacts-list {
+}
+.contacts-list table {
+  margin: 0 auto;
+}
+.contacts-list img {
+  width: 70px;
+  height: auto;
+}
