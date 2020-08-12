@@ -40,9 +40,9 @@ class ContactList extends React.Component {
     });
   };
 
-  deleteContact(name) {
+  deleteContact(id) {
     const list = [...this.state.contacts];
-    const contactIndex = list.findIndex((e) => e.name === name);
+    const contactIndex = list.findIndex((e) => e.id === id);
     list.splice(contactIndex, 1);
     this.setState({
       contacts: list,
@@ -67,7 +67,7 @@ class ContactList extends React.Component {
           <tbody>
             {this.state.contacts.map((contact) => {
               return (
-                <tr key={contact.name}>
+                <tr key={contact.id}>
                   <td>
                     <img src={contact.pictureUrl} alt={contact.name} />
                   </td>
@@ -76,7 +76,7 @@ class ContactList extends React.Component {
                   </td>
                   <td>{Math.round(contact.popularity * 100) / 100}</td>
                   <td>
-                    <button onClick={() => this.deleteContact(contact.name)}>
+                    <button onClick={() => this.deleteContact(contact.id)}>
                       Delete
                     </button>
                   </td>
