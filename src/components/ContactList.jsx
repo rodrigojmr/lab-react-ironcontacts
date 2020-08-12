@@ -12,8 +12,17 @@ class ContactList extends React.Component {
     };
   }
 
+  randomContact = () => {
+    let randomContact =
+      contacts[Math.floor(Math.random() * (contacts.length - 1))];
+    if (this.state.contacts.some((e) => e.id === randomContact.id)) {
+      console.log('already exists');
+      return this.randomContact();
+    } else return randomContact;
+  };
+
   addContact = () => {
-    const contact = contacts[Math.floor(Math.random() * (contacts.length - 1))];
+    const contact = this.randomContact();
     const list = [...this.state.contacts, contact];
     this.setState({
       contacts: list,
@@ -50,6 +59,7 @@ class ContactList extends React.Component {
   }
 
   render() {
+    console.log(this.state.contacts);
     return (
       <div className="contacts-list">
         <h1>Contacts List</h1>
